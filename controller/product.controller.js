@@ -4,6 +4,13 @@ const upload = require("../utils/upload")
 const Products = require("../model/Products")
 const cloudinary = require("../utils/cloudinary.config")
 
+
+
+exports.GetAllProducts = asyncHandler(async (req, res) => {
+    const result = await Products.find()
+    res.json({ message: "Produts Fetch Success", result })
+})
+
 exports.AddProduct = asyncHandler(async (req, res) => {
     upload(req, res, async (err) => {
         const { name, price, desc, qty, unit } = req.body
