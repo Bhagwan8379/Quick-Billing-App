@@ -81,6 +81,7 @@ exports.VerifyOTP = asyncHandler(async (req, res) => {
     //jWT
     const Token = JWT.sign({ userID: isFound._id }, process.env.JWT_KEY, { expiresIn: "10d" })
     //Cookie
+
     res.cookie("admin", Token, {
         maxAge: 10 * 24 * 60 * 60 * 1000,
         httpOnly: true,
